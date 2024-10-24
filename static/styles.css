@@ -1,0 +1,165 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+button {
+  color: inherit;
+}
+button, [role="button"] {
+  cursor: pointer;
+}
+code {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+  font-size: 1em;
+}
+img,
+svg {
+  display: block;
+}
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.transition-size {
+  transition-property: font-size;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
+.div-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.elem-div-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.elem-div-column {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.elem-div-column-center {
+  display: flex;
+  flex-flow: column;
+  align-content: space-around;
+}
+
+.elem-div-row {
+  display: flex;
+  flex-flow: row;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.nav-row {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.nav-col {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.dataset-img {
+  max-width: 15em;
+  max-height: 20em;
+}
+
+.pdx-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.pdy-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.button-overlay {
+  position: relative;
+}
+
+.previous-image-button,
+.next-image-button {
+  color: aqua;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.previous-image-button:hover,
+.next-image-button:hover {
+  font-size: 2rem;
+  color: rgb(207, 17, 210);
+}
+
+.previous-image-button:focus,
+.next-image-button:focus {
+  --pico-primary-focus: rgba(0, 0, 0, 0);
+}
+
+.previous-image-button {
+  left: 10%;
+}
+
+.next-image-button {
+  left: 90%;
+}

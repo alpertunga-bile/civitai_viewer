@@ -1,0 +1,61 @@
+.model-card-img {
+    max-width: 15em;
+    max-height: 20em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.model-card-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: space-around;
+    gap: 30px 20px;
+}
+
+.model-card-div-elem {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    gap: 10px;
+}
+
+.model-card-button-overlay {
+    position: relative;
+}
+
+.model-card-previous-image-button,
+.model-card-next-image-button {
+    color: aqua;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.model-card-previous-image-button:hover,
+.model-card-next-image-button:hover {
+    font-size: 2rem;
+    color: rgb(207, 17, 210);
+}
+
+.model-card-previous-image-button:focus,
+.model-card-next-image-button:focus {
+    --pico-primary-focus: rgba(0, 0, 0, 0);
+}
+
+.model-card-previous-image-button {
+    left: 10%;
+}
+
+.model-card-next-image-button {
+    left: 90%;
+}
