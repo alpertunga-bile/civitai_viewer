@@ -54,7 +54,7 @@ deno task preview
 
 ### Datasets
 
-- Showing informations about from the link of the LoRA which get from the provided local dataset.
+- Showing informations from the link of the LoRA which is acquired from the provided local dataset.
 - Currently the user can:
     - Select model versions of the base model
     - See trained words
