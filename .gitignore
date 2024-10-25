@@ -12,6 +12,4 @@ node_modules/
 
 *.csv
 
-*.json
-
 .vscode/launch.json
