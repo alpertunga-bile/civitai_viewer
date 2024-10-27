@@ -7,7 +7,11 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
         version.name
     );
 
-    const image_url = useSignal(data.modelVersions[0].images[0].url);
+    const image_url = useSignal(
+        data.modelVersions[0].images[0]
+            ? data.modelVersions[0].images[0].url
+            : "/no_image_available_sign.png",
+    );
     const image_index = useSignal(0);
     const version_data = useSignal(data.modelVersions[0]);
 
@@ -19,7 +23,9 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
                 model_version.name === event.target.value
             )[0];
 
-        image_url.value = version_data.value.images[0].url;
+        image_url.value = version_data.value.images[0]
+            ? version_data.value.images[0].url
+            : "/no_image_available_sign.png";
     };
 
     const imageButtonNextOnClick = (event) => {
@@ -31,7 +37,9 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
 
         batch(() => {
             image_index.value = new_image_index;
-            image_url.value = version_data.value.images[new_image_index].url;
+            image_url.value = version_data.value.images[new_image_index]
+                ? version_data.value.images[new_image_index].url
+                : "/no_image_available_sign.png";
         });
     };
 
@@ -44,13 +52,15 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
 
         batch(() => {
             image_index.value = new_image_index;
-            image_url.value = version_data.value.images[new_image_index].url;
+            image_url.value = version_data.value.images[new_image_index]
+                ? version_data.value.images[new_image_index].url
+                : "/no_image_available_sign.png";
         });
     };
 
     return (
         <div className="model-card-div-elem">
-            <strong>{data.name}</strong>
+            <strong data-tooltip={data.name}>{data.name.slice(0, 21)}</strong>
             <select className="overflow-auto" onChange={versionOnChange}>
                 {model_version_names.map((name) => (
                     <option value={name}>{name}</option>
@@ -70,6 +80,9 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
                 >
                     {">"}
                 </button>
+                <strong className="model-card-bottom-text-overlay">
+                    1 / 100
+                </strong>
             </div>
         </div>
     );

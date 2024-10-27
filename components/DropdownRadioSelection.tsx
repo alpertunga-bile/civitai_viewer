@@ -14,7 +14,7 @@ export default function DropdownRadioSelection(
                             type="radio"
                             name={props.name}
                             value={first_option}
-                            selected
+                            checked
                         />
                         {first_option}
                     </label>

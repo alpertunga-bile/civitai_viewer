@@ -6,8 +6,6 @@ import { attach_url_search } from "../../static/utilities.ts";
 
 interface IHandlerData {
     items: Uint8Array[];
-    url: string;
-    next_cursor: string;
 }
 
 export const handler: Handlers<IHandlerData> = {
@@ -17,8 +15,6 @@ export const handler: Handlers<IHandlerData> = {
             url: "https://civitai.com/api/v1/models",
         });
 
-        civitai_url.searchParams.set("limit", "10");
-
         const civitai_data = await fetch(civitai_url.toString()).then((res) =>
             res.json()
         );
@@ -26,12 +22,8 @@ export const handler: Handlers<IHandlerData> = {
         if (!civitai_data.items) {
             return ctx.render({
                 items: [],
-                url: req.url,
-                next_cursor: "",
             });
         }
-
-        const next_cursor = civitai_data.metadata.nextCursor || "";
 
         const items = civitai_data.items.map((item) =>
             new Uint8Array(encode(item))
@@ -39,31 +31,19 @@ export const handler: Handlers<IHandlerData> = {
 
         return await ctx.render({
             items: items,
-            url: req.url,
-            next_cursor: next_cursor,
         });
     },
 };
 
 export default function SearchModel(props: PageProps) {
-    const { items, url, next_cursor } = props.data;
-
-    let next_url: string = "";
-    let prev_url: string = "";
-
-    if (url) {
-        prev_url = url;
-        if (next_cursor) {
-            const temp_url = new URL(url);
-            temp_url.searchParams.set("page", next_cursor);
-            next_url = temp_url.toString();
-        }
-    }
+    const { items } = props.data;
 
     return (
         <div className="pdx-4 pdy-8">
-            <ModelSearchForm />
-            <hr></hr>
+            <details open className="fixed-top-search-bar">
+                <summary>Search Parameters</summary>
+                <ModelSearchForm />
+            </details>
             <div>
                 <ModelCards items={items} />
             </div>

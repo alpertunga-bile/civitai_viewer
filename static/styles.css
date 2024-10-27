@@ -24,15 +24,6 @@ code {
     monospace;
   font-size: 1em;
 }
-img,
-svg {
-  display: block;
-}
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
 
 html {
   line-height: 1.5;

@@ -1,4 +1,3 @@
-import { decode } from "cbor-x";
 import ModelCard from "../islands/model-card.tsx";
 
 export default function ModelCards(data: { items: Uint8Array[] }) {

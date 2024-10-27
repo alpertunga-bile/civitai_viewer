@@ -15,7 +15,9 @@ export function attach_url_search(
             val = value === "disabled" ? "false" : "true";
         }
 
-        url.searchParams.set(key, val);
+        if (val !== "") {
+            url.searchParams.set(key, val);
+        }
     });
 
     return url;
