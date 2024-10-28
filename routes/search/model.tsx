@@ -6,6 +6,7 @@ import { attach_url_search } from "../../static/utilities.ts";
 
 interface IHandlerData {
     items: Uint8Array[];
+    model_url: string;
 }
 
 export const handler: Handlers<IHandlerData> = {
@@ -22,6 +23,7 @@ export const handler: Handlers<IHandlerData> = {
         if (!civitai_data.items) {
             return ctx.render({
                 items: [],
+                model_url: "",
             });
         }
 
@@ -31,12 +33,15 @@ export const handler: Handlers<IHandlerData> = {
 
         return await ctx.render({
             items: items,
+            model_url: civitai_url.toString(),
         });
     },
 };
 
 export default function SearchModel(props: PageProps) {
-    const { items } = props.data;
+    const { items, model_url } = props.data;
+
+    console.log(model_url);
 
     return (
         <div className="pdx-4 pdy-8">

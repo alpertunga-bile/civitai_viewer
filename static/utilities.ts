@@ -16,7 +16,7 @@ export function attach_url_search(
         }
 
         if (val !== "") {
-            url.searchParams.set(key, val);
+            url.searchParams.append(key, val);
         }
     });
 

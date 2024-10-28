@@ -109,6 +109,8 @@ export default function ModelInfo(
                 </div>
                 <ImageButtonOverlay
                     image_url={image_link}
+                    current_image_index={image_index}
+                    total_image_count={total_images}
                     prevOnClick={imageButtonPrevOnClick}
                     nextOnClick={imageButtonNextOnClick}
                 />

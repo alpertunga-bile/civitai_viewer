@@ -28,49 +28,6 @@
     gap: 10px;
 }
 
-.model-card-button-overlay {
-    position: relative;
-}
-
-.model-card-bottom-text-overlay {
-    position: relative;
-    color: aqua;
-    font-size: 0.9rem;
-    top: 100%;
-    transform: translate(-50%, 0%);
-}
-
-.model-card-previous-image-button,
-.model-card-next-image-button {
-    color: aqua;
-    background-color: rgba(0, 0, 0, 0);
-    border-color: rgba(0, 0, 0, 0);
-    font-size: 1.3rem;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.model-card-previous-image-button:hover,
-.model-card-next-image-button:hover {
-    font-size: 2rem;
-    color: rgb(207, 17, 210);
-}
-
-.model-card-previous-image-button:focus,
-.model-card-next-image-button:focus {
-    --pico-primary-focus: rgba(0, 0, 0, 0);
-}
-
-.model-card-previous-image-button {
-    left: 10%;
-}
-
-.model-card-next-image-button {
-    left: 90%;
-}
-
 .fixed-top-search-bar {
     position: sticky;
     top: 2px;

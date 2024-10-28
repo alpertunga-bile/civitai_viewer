@@ -124,14 +124,24 @@ html {
   position: relative;
 }
 
+.image-index-counter {
+  position: absolute;
+  color: rgb(207, 17, 210);
+  font-size: 0.9rem;
+  font-weight: bold;
+  top: 94%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .previous-image-button,
 .next-image-button {
+  position: absolute;
   color: aqua;
   background-color: rgba(0, 0, 0, 0);
   border-color: rgba(0, 0, 0, 0);
   font-size: 1.3rem;
   font-weight: bold;
-  position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
 }
