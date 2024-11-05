@@ -1,27 +1,21 @@
-import DropdownRadioSelection from "./DropdownRadioSelection.tsx";
+import { DefaultClosedAccordion, ElemRow, Grid } from "./DefaultComponents.tsx";
+import { DropdownRadioSelection, Searchbar } from "./FormComponents.tsx";
 
 export default function ModelSearchForm() {
     return (
         <form>
-            <div className="elem-div-row">
-                <input
-                    name="q"
-                    type="search"
+            <ElemRow>
+                <Searchbar
+                    query_name="query"
                     placeholder="Search model with name"
-                    aria-label="Search"
-                >
-                </input>
-                <input
-                    name="tag"
-                    type="search"
+                />
+                <Searchbar
+                    query_name="tag"
                     placeholder="Search model with tag"
-                    aria-label="Search"
-                >
-                </input>
-            </div>
-            <details>
-                <summary>Advanced Options</summary>
-                <div className="grid">
+                />
+            </ElemRow>
+            <DefaultClosedAccordion summary="Advanced Options">
+                <Grid>
                     <DropdownRadioSelection
                         summary="NSFW"
                         name="nsfw"
@@ -47,8 +41,8 @@ export default function ModelSearchForm() {
                             "Day",
                         ]}
                     />
-                </div>
-            </details>
+                </Grid>
+            </DefaultClosedAccordion>
             <button type="submit">Search</button>
         </form>
     );

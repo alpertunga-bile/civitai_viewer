@@ -3,7 +3,7 @@ import { decode } from "cbor-x";
 import DropdownModelVersion from "./dropdown-model-version.tsx";
 import TrainedWordCards from "./trained-words-card.tsx";
 import DropdownModelSelect from "./dropdown-model-select.tsx";
-import ImageButtonOverlay from "./image-button-overlay.tsx";
+import ImageOverlay from "./image-overlay.tsx";
 
 export default function ModelInfo(
     props: { lora_keys: string[]; lora_values: Uint8Array[] },
@@ -107,7 +107,7 @@ export default function ModelInfo(
                     </div>
                     <TrainedWordCards trained_words={trained_words} />
                 </div>
-                <ImageButtonOverlay
+                <ImageOverlay
                     image_url={image_link}
                     current_image_index={image_index}
                     total_image_count={total_images}

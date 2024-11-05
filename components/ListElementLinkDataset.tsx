@@ -4,7 +4,7 @@ export default function ListElementLinkDataset(props: { datasetName: string }) {
     const capitalizedName = capitalize(props.datasetName);
 
     return (
-        <li>
+        <li key={props.datasetName}>
             <a href={`/datasets/${props.datasetName}`}>{capitalizedName}</a>
         </li>
     );

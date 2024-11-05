@@ -6,13 +6,13 @@ export default function NavDatasets(props: { datasetName: string }) {
     return (
         <nav aria-label="breadcrumb">
             <ul>
-                <li>
+                <li key={"Home"}>
                     <a href={"/"}>Home</a>
                 </li>
-                <li>
+                <li key={"Datasets"}>
                     Datasets
                 </li>
-                <li>
+                <li key={captalizedName}>
                     <strong>
                         {captalizedName}
                     </strong>

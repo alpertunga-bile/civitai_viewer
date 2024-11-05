@@ -6,7 +6,7 @@ export default function DropdownModelVersion(
     return (
         <select className="overflow-auto" onChange={props.onChange}>
             {props.model_version_names.value.map((name) => (
-                <option value={name}>{name}</option>
+                <option key={name} value={name}>{name}</option>
             ))}
         </select>
     );

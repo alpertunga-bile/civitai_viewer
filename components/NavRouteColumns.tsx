@@ -13,8 +13,10 @@ export function NavRouteColumns(
             <strong>{props.category_name}</strong>
             <ul>
                 {props.list_elements.map((element) => (
-                    <li>
-                        <a href={element.href}>{capitalize(element.text)}</a>
+                    <li key={element.text}>
+                        <a href={element.href}>
+                            {capitalize(element.text)}
+                        </a>
                     </li>
                 ))}
             </ul>

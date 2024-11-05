@@ -1,11 +1,9 @@
 import { decode } from "cbor-x";
 import { batch, computed, useSignal } from "@preact/signals";
-import ImageButtonOverlay from "./image-button-overlay.tsx";
+import ImageOverlay from "./image-overlay.tsx";
 
 export default function ModelCard(props: { model_data: Uint8Array }) {
     const data = decode(props.model_data);
-    const model_url = `https://civitai.com/models/${data.id}`;
-
     const model_version_names = data.modelVersions.map((version) =>
         version.name
     );
@@ -19,9 +17,6 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
     const version_data = useSignal(data.modelVersions[0]);
 
     const total_images = computed(() => version_data.value.images.length);
-    const download_url = computed(() =>
-        version_data.value.files[0].downloadUrl
-    );
 
     const versionOnChange = (event) => {
         version_data.value =
@@ -66,32 +61,19 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
 
     return (
         <div className="model-card-div-elem">
-            <a href={model_url}>
-                <strong data-tooltip={data.name}>
-                    {data.name.slice(0, 21)}
-                </strong>
-            </a>
+            <strong data-tooltip={data.name}>{data.name.slice(0, 21)}</strong>
             <select className="overflow-auto" onChange={versionOnChange}>
                 {model_version_names.map((name) => (
-                    <option value={name}>{name}</option>
+                    <option key={name} value={name}>{name}</option>
                 ))}
             </select>
-            <ImageButtonOverlay
+            <ImageOverlay
                 image_url={image_url}
                 current_image_index={image_index}
                 total_image_count={total_images}
                 nextOnClick={imageButtonNextOnClick}
                 prevOnClick={imageButtonPrevOnClick}
             />
-            <a className="contrast" href={download_url}>
-                <button
-                    data-tooltip={`Download ${version_data.value.name} model`}
-                    data-placement="bottom"
-                    className="outline secondary"
-                >
-                    Download
-                </button>
-            </a>
         </div>
     );
 }
