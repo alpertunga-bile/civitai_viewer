@@ -1,5 +1,13 @@
 import { ComponentChildren } from "preact";
 
+export function MainDiv(props: { children: ComponentChildren }) {
+    return (
+        <div className={"bg-neutral-900"}>
+            {props.children}
+        </div>
+    );
+}
+
 export function DefaultOpenedAccordion(
     props: { children: ComponentChildren; summary: string },
 ) {
@@ -24,7 +32,7 @@ export function DefaultClosedAccordion(
 
 export function NavFixedTop(props: { children: ComponentChildren }) {
     return (
-        <div className="fixed-top-search-bar">
+        <div className="sticky top-1 z-10 bg-neutral-800 p-6 pico">
             {props.children}
         </div>
     );
@@ -40,7 +48,17 @@ export function Grid(props: { children: ComponentChildren }) {
 
 export function ElemRow(props: { children: ComponentChildren }) {
     return (
-        <div className={"elem-div-row"}>
+        <div className={"flex flex-row flex-grow justify-evenly gap-2.5"}>
+            {props.children}
+        </div>
+    );
+}
+
+export function ElemCol(props: { children: ComponentChildren }) {
+    return (
+        <div
+            className={"flex flex-col justify-around items-center content-around gap-1.5"}
+        >
             {props.children}
         </div>
     );

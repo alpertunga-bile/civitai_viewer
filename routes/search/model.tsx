@@ -5,13 +5,16 @@ import {
     attach_url_search,
     get_handler_data,
     IHandlerData,
+    image_url_history,
     model_url_history,
 } from "../../static/utilities.ts";
 import {
-    DefaultOpenedAccordion,
+    DefaultClosedAccordion,
+    MainDiv,
     NavFixedTop,
 } from "../../components/DefaultComponents.tsx";
 import NavPageButtons from "../../components/NavPageButtons.tsx";
+import NavBreadcrumb from "../../components/NavBreadcrumb.tsx";
 
 export const handler: Handlers<IHandlerData> = {
     async GET(req, ctx) {
@@ -19,6 +22,8 @@ export const handler: Handlers<IHandlerData> = {
             search_url: req.url,
             url: "https://civitai.com/api/v1/models",
         });
+
+        image_url_history.reset();
 
         civitai_url.searchParams.set("limit", "100");
 
@@ -42,19 +47,24 @@ export default function SearchModel(props: PageProps) {
     const { items, searched_url, next_cursor } = props.data;
 
     return (
-        <div className="pdx-4 pdy-8">
-            <NavFixedTop>
-                <DefaultOpenedAccordion summary="Search Parameters">
-                    <ModelSearchForm />
-                </DefaultOpenedAccordion>
-                <hr></hr>
-                <NavPageButtons
-                    searched_url={searched_url}
-                    next_cursor={next_cursor}
-                    url_history={model_url_history}
-                />
-            </NavFixedTop>
-            <ModelCards items={items} />
-        </div>
+        <MainDiv>
+            <div className={"px-4 pico"}>
+                <NavBreadcrumb crumbs={["Search", "Models"]} />
+            </div>
+            <div className="px-4 py-8">
+                <NavFixedTop>
+                    <DefaultClosedAccordion summary="Search Parameters">
+                        <ModelSearchForm />
+                    </DefaultClosedAccordion>
+                    <hr></hr>
+                    <NavPageButtons
+                        searched_url={searched_url}
+                        next_cursor={next_cursor}
+                        url_history={model_url_history}
+                    />
+                </NavFixedTop>
+                <ModelCards items={items} />
+            </div>
+        </MainDiv>
     );
 }

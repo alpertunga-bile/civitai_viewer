@@ -4,7 +4,7 @@ export default function TrainedWordCards(
     props: { trained_words: Signal<string[]> },
 ) {
     return (
-        <article>
+        <article className={"pico"}>
             <header>Trained Words</header>
             <body>
                 {props.trained_words.value.join(", ")}

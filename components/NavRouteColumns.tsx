@@ -9,7 +9,7 @@ export function NavRouteColumns(
     props: { category_name: string; list_elements: INavObject[] },
 ) {
     return (
-        <div className="elem-div-center nav-col">
+        <div className="flex flex-col justify-start items-stretch">
             <strong>{props.category_name}</strong>
             <ul>
                 {props.list_elements.map((element) => (

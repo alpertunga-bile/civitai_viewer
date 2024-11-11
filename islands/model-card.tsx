@@ -32,7 +32,8 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
     const imageButtonNextOnClick = (event) => {
         event.preventDefault();
 
-        const new_image_index = image_index.value === total_images.value - 1
+        const new_image_index = total_images.value <= 1 ||
+                image_index.value === total_images.value - 1
             ? 0
             : image_index.value + 1;
 
@@ -60,8 +61,14 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
     };
 
     return (
-        <div className="model-card-div-elem">
-            <strong data-tooltip={data.name}>{data.name.slice(0, 21)}</strong>
+        <div className="flex flex-col justify-around items-center content-around gap-1.5">
+            <strong
+                className={"text-center w-48 h-auto truncate ..."}
+                data-tooltip={data.name}
+                data-placement={"bottom"}
+            >
+                {data.name}
+            </strong>
             <select className="overflow-auto" onChange={versionOnChange}>
                 {model_version_names.map((name) => (
                     <option key={name} value={name}>{name}</option>

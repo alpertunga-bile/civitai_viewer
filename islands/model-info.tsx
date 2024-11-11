@@ -68,9 +68,11 @@ export default function ModelInfo(
     const imageButtonNextOnClick = (event) => {
         event.preventDefault();
 
-        const new_image_index = image_index.value + 1 === total_images.value
-            ? 0
-            : image_index.value + 1;
+        const new_image_index =
+            total_images.value <= 1 ||
+                image_index.value + 1 === total_images.value
+                ? 0
+                : image_index.value + 1;
 
         batch(() => {
             image_index.value = new_image_index;
@@ -92,14 +94,14 @@ export default function ModelInfo(
     };
 
     return (
-        <div className="elem-div-column">
+        <div className="flex flex-col justify-evenly items-stretch gap-2.5">
             <DropdownModelSelect
                 lora_names={props.lora_keys}
                 onChange={dropdownOnChange}
             />
-            <div className="elem-div-row">
-                <div className="elem-div-column">
-                    <div className="elem-div-column">
+            <div className="flex flex-row flex-grow justify-evenly gap-2.5">
+                <div className="flex flex-col justify-evenly items-stretch gap-2.5">
+                    <div className="flex flex-col justify-evenly items-stretch gap-2.5">
                         <DropdownModelVersion
                             model_version_names={model_version_names}
                             onChange={versionOnChange}
@@ -115,7 +117,7 @@ export default function ModelInfo(
                     nextOnClick={imageButtonNextOnClick}
                 />
             </div>
-            <div className="elem-div-row">
+            <div className="flex flex-row flex-grow justify-evenly gap-2.5">
                 <a className="contrast" href={lora_link}>
                     <button
                         data-tooltip={`Go to ${lora_link}`}

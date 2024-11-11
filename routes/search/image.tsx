@@ -1,16 +1,20 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { reset } from "$std/fmt/colors.ts";
 import {
-    DefaultOpenedAccordion,
+    DefaultClosedAccordion,
+    MainDiv,
     NavFixedTop,
 } from "../../components/DefaultComponents.tsx";
 import ImageCards from "../../components/ImageCards.tsx";
 import ImageSearchForm from "../../components/ImageSearchForm.tsx";
+import NavBreadcrumb from "../../components/NavBreadcrumb.tsx";
 import NavPageButtons from "../../components/NavPageButtons.tsx";
 import {
     attach_url_search,
     get_handler_data,
     IHandlerData,
     image_url_history,
+    model_url_history,
 } from "../../static/utilities.ts";
 
 export const handler: Handlers<IHandlerData> = {
@@ -19,6 +23,8 @@ export const handler: Handlers<IHandlerData> = {
             search_url: req.url,
             url: "https://civitai.com/api/v1/images",
         });
+
+        model_url_history.reset();
 
         civitai_url.searchParams.set("limit", "200");
 
@@ -42,19 +48,24 @@ export default function SearchImage(props: PageProps) {
     const { items, searched_url, next_cursor } = props.data;
 
     return (
-        <div className="pdx-4 pdy-8">
-            <NavFixedTop>
-                <DefaultOpenedAccordion summary="Search Parameters">
-                    <ImageSearchForm />
-                </DefaultOpenedAccordion>
-                <hr></hr>
-                <NavPageButtons
-                    searched_url={searched_url}
-                    next_cursor={next_cursor}
-                    url_history={image_url_history}
-                />
-            </NavFixedTop>
-            <ImageCards items={items} />
-        </div>
+        <MainDiv>
+            <div className={"px-4 pico"}>
+                <NavBreadcrumb crumbs={["Search", "Images"]} />
+            </div>
+            <div className="px-4 py-8">
+                <NavFixedTop>
+                    <DefaultClosedAccordion summary="Search Parameters">
+                        <ImageSearchForm />
+                    </DefaultClosedAccordion>
+                    <hr></hr>
+                    <NavPageButtons
+                        searched_url={searched_url}
+                        next_cursor={next_cursor}
+                        url_history={image_url_history}
+                    />
+                </NavFixedTop>
+                <ImageCards items={items} />
+            </div>
+        </MainDiv>
     );
 }
