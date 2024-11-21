@@ -50,3 +50,28 @@ export function DropdownRadioSelection(
         </details>
     );
 }
+
+export function DropdownCheckboxSelection(
+    props: { summary: string; name: string; options: string[] },
+) {
+    return (
+        <details className={"dropdown"}>
+            <summary>{props.summary}</summary>
+            <ul>
+                {props.options.map((option) => (
+                    <li key={option}>
+                        <label>
+                            <input
+                                type={"checkbox"}
+                                name={props.name}
+                                value={option}
+                            >
+                                {option}
+                            </input>
+                        </label>
+                    </li>
+                ))}
+            </ul>
+        </details>
+    );
+}

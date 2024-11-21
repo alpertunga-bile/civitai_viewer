@@ -12,8 +12,13 @@ export default function ImageOverlay(
     const plus_one_index = computed(() => props.current_image_index.value + 1);
 
     return (
-        <div className="button-overlay">
-            <img className="dataset-img" src={props.image_url}></img>
+        <div className="relative">
+            <img
+                className="max-w-60 max-h-80"
+                src={props.image_url}
+                loading={"lazy"}
+            >
+            </img>
             <button
                 className="previous-image-button transition-colors transition-size"
                 onClick={props.prevOnClick}

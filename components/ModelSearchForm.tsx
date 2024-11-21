@@ -1,5 +1,9 @@
 import { DefaultClosedAccordion, ElemRow, Grid } from "./DefaultComponents.tsx";
-import { DropdownRadioSelection, Searchbar } from "./FormComponents.tsx";
+import {
+    DropdownCheckboxSelection,
+    DropdownRadioSelection,
+    Searchbar,
+} from "./FormComponents.tsx";
 
 export default function ModelSearchForm() {
     return (
@@ -39,6 +43,19 @@ export default function ModelSearchForm() {
                             "Month",
                             "Week",
                             "Day",
+                        ]}
+                    />
+                    <DropdownCheckboxSelection
+                        summary="Model Types"
+                        name="types"
+                        options={[
+                            "Checkpoint",
+                            "TextualInversion",
+                            "Hypernetwork",
+                            "AestheticGradient",
+                            "LORA",
+                            "Controlnet",
+                            "Poses",
                         ]}
                     />
                 </Grid>

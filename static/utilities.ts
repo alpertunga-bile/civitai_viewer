@@ -11,9 +11,7 @@ export function attach_url_search(
     const url = new URL(data.url);
 
     search_url.searchParams.forEach((value, key) => {
-        if (value !== "") {
-            url.searchParams.set(key, value);
-        }
+        value !== "" && url.searchParams.append(key, value);
     });
 
     return url;
@@ -23,6 +21,7 @@ export class URLHistory {
     constructor(home_page: string) {
         this.url_history = new Map<string, number>();
         this.url_history.set(home_page, 0);
+        this.homepage = home_page;
     }
 
     add_url(url: string) {
@@ -44,11 +43,29 @@ export class URLHistory {
         return this.url_history.keys().toArray()[prev_index];
     }
 
+    reset() {
+        /*
+         * check with 1 because of the homepage is added as default
+         */
+        if (this.url_history.size === 1) {
+            return;
+        }
+
+        this.url_history.clear();
+        this.url_history.set(this.homepage, 0);
+    }
+
     readonly url_history: Map<string, number>;
+    readonly homepage: string;
 }
 
 export const model_url_history = new URLHistory("/search/model");
 export const image_url_history = new URLHistory("/search/image");
+
+export function reset_histories() {
+    model_url_history.reset();
+    image_url_history.reset();
+}
 
 export interface IHandlerData {
     items: Uint8Array[];
@@ -78,7 +95,7 @@ export async function get_handler_data(
         new Uint8Array(encode(item))
     );
 
-    next_cursor = civitai_data.metadata
+    next_cursor = civitai_data.metadata && civitai_data.metadata.nextCursor
         ? civitai_data.metadata.nextCursor
         : "0";
 
