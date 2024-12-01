@@ -12,7 +12,7 @@ export default function App({ Component }: PageProps) {
         <link rel="stylesheet" href="/styles.css" />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.fuchsia.min.css"
+          href="/pico.classless.conditional.fuchsia.min.css"
         >
         </link>
       </head>

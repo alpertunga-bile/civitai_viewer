@@ -15,3 +15,5 @@ node_modules/
 *.json
 
 .vscode/launch.json
+
+.cache/
