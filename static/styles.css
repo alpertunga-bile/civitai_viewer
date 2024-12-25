@@ -139,3 +139,49 @@ html {
 .next-page:hover {
   color: rgb(207, 17, 210);
 }
+
+/*
+ * -------------------------------------------------------------------------------------
+ * -- Image Card flip
+*/
+
+.image-card {
+  width: 20rem;
+  height: 28rem;
+  max-width: 20rem;
+  max-height: 28rem;
+  transition: 1s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.image-card:hover .image-card-face-front {
+  transform: rotateY(-180deg);
+}
+
+.image-card:hover .image-card-face-back {
+  transform: rotateY(0);
+}
+
+.image-card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: 1s ease-in-out;
+}
+
+.image-card-face img {
+  width: 20rem;
+  height: 28rem;
+  max-width: 20rem;
+  max-height: 28rem;
+}
+
+.image-card-face-back {
+  max-width: 20rem;
+  max-height: 28rem;
+}
+
+.image-card-face-back {
+  transform: rotateY(0.5turn);
+}

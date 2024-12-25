@@ -77,6 +77,11 @@ cache_manager_options.save_path = ".cache";
 
 export const cache_manager = new CacherManager(cache_manager_options);
 
+/*
+ * ---------------------------------------------------------------------------------------
+ * -- Handler functions
+ */
+
 export interface IHandlerData {
   items: Uint8Array[];
   searched_url: string;
@@ -174,4 +179,41 @@ export async function get_tags_by_char(
   });
 
   return tags;
+}
+
+export interface ITagInfo {
+  tags: Array<Array<string>>;
+}
+
+const tag_head_chars = "abcdefghijklmnopqrstuvwxyz123456789".split("");
+
+export async function get_tag_data(): Promise<ITagInfo> {
+  const cache_filename = "tags";
+
+  const is_exists = cache_manager.is_cache_exists(cache_filename);
+
+  if (is_exists) {
+    const return_info = await cache_manager.get_data(cache_filename);
+    const tag_info: ITagInfo = JSON.parse(return_info.data);
+
+    if (!return_info.is_expired) {
+      return tag_info;
+    }
+  }
+
+  const tag_promises: Promise<Set<string>>[] = [];
+
+  tag_head_chars.forEach((char) =>
+    tag_promises.push(get_tags_by_char(char, 5))
+  );
+
+  const tag_sets = await Promise.all(tag_promises);
+
+  const tag_info: ITagInfo = {
+    tags: tag_sets.map((set_value) => Array.from(set_value)),
+  };
+
+  cache_manager.save_from_obj(tag_info, cache_filename);
+
+  return { tags: tag_sets.map((set_value) => Array.from(set_value)) };
 }

@@ -66,6 +66,7 @@ export default function SuggestedSearchbar(
   return (
     <PicoStyle>
       <input
+        name="tag"
         className={"search"}
         type={"search"}
         placeholder={"Search a tag"}
@@ -74,7 +75,7 @@ export default function SuggestedSearchbar(
         ref={searchbar_ref}
       />
       <ul
-        className={"overflow-y-auto h-52 w-auto z-10"}
+        className={"overflow-y-auto max-h-36 z-10"}
         key="tag_searchbar_suggestion"
       >
         {suggestions.value.map((suggestion) => (

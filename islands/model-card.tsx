@@ -69,7 +69,7 @@ export default function ModelCard(props: { model_data: Uint8Array }) {
   return (
     <div className="flex flex-col justify-around items-center content-around gap-1.5">
       <strong
-        className={"text-center w-48 h-auto truncate ..."}
+        className={"text-center w-48 h-auto truncate"}
         data-tooltip={data.name}
         data-placement={"bottom"}
       >

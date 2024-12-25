@@ -11,7 +11,6 @@ import * as $search_image from "./routes/search/image.tsx";
 import * as $search_model from "./routes/search/model.tsx";
 import * as $dropdown_model_select from "./islands/dropdown-model-select.tsx";
 import * as $dropdown_model_version from "./islands/dropdown-model-version.tsx";
-import * as $image_card from "./islands/image-card.tsx";
 import * as $image_overlay from "./islands/image-overlay.tsx";
 import * as $model_card from "./islands/model-card.tsx";
 import * as $model_info from "./islands/model-info.tsx";
@@ -32,7 +31,6 @@ const manifest = {
   islands: {
     "./islands/dropdown-model-select.tsx": $dropdown_model_select,
     "./islands/dropdown-model-version.tsx": $dropdown_model_version,
-    "./islands/image-card.tsx": $image_card,
     "./islands/image-overlay.tsx": $image_overlay,
     "./islands/model-card.tsx": $model_card,
     "./islands/model-info.tsx": $model_info,
