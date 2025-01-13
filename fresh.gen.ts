@@ -11,11 +11,15 @@ import * as $search_image from "./routes/search/image.tsx";
 import * as $search_model from "./routes/search/model.tsx";
 import * as $dropdown_model_select from "./islands/dropdown-model-select.tsx";
 import * as $dropdown_model_version from "./islands/dropdown-model-version.tsx";
+import * as $image_button_overlay from "./islands/image-button-overlay.tsx";
+import * as $image_card from "./islands/image-card.tsx";
 import * as $image_overlay from "./islands/image-overlay.tsx";
 import * as $model_card from "./islands/model-card.tsx";
 import * as $model_info from "./islands/model-info.tsx";
+import * as $next_prev_buttons from "./islands/next-prev-buttons.tsx";
 import * as $overflow_modal from "./islands/overflow-modal.tsx";
 import * as $suggested_searchbar from "./islands/suggested-searchbar.tsx";
+import * as $trained_words_card from "./islands/trained-words-card.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -31,11 +35,15 @@ const manifest = {
   islands: {
     "./islands/dropdown-model-select.tsx": $dropdown_model_select,
     "./islands/dropdown-model-version.tsx": $dropdown_model_version,
+    "./islands/image-button-overlay.tsx": $image_button_overlay,
+    "./islands/image-card.tsx": $image_card,
     "./islands/image-overlay.tsx": $image_overlay,
     "./islands/model-card.tsx": $model_card,
     "./islands/model-info.tsx": $model_info,
+    "./islands/next-prev-buttons.tsx": $next_prev_buttons,
     "./islands/overflow-modal.tsx": $overflow_modal,
     "./islands/suggested-searchbar.tsx": $suggested_searchbar,
+    "./islands/trained-words-card.tsx": $trained_words_card,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

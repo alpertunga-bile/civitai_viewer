@@ -18,6 +18,7 @@ export default function ImageCard(
       >
         <img
           src={data.url}
+          loading={"lazy"}
         />
       </div>
       <div
